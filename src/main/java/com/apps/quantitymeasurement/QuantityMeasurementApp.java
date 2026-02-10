@@ -1,10 +1,13 @@
 package com.apps.quantitymeasurement;
 
+import com.apps.quantitymeasurement.Length.LengthUnit;
+
 public class QuantityMeasurementApp {
 	
 	public static void main(String[] args) {
 		demonstrateFeetEquality();
 		demonstrtaeInchesEquality();
+		demonstrateFeetInchesComparison();
 	}
 
 	public static class Feet {
@@ -77,11 +80,23 @@ public class QuantityMeasurementApp {
 		boolean feetResult = feetValue1.equals(feetValue2);
 		System.out.println("Equal" + "(" + feetResult + ")");
 	}
-
+	
 	public static void demonstrtaeInchesEquality() {
 		Inches inchesValue1 = new Inches(1.0);
 		Inches inchesValue2 = new Inches(1.0);
 		boolean inchesResult = inchesValue1.equals(inchesValue2);
 		System.out.println("Equal" + "(" + inchesResult + ")");
+	}
+	
+	public static boolean demonstrateLengthEquality(Length length1, Length length2)
+	{
+		return length1.equals(length2);
+	}
+	public static void demonstrateFeetInchesComparison()
+	{
+		Length length1 = new Length(1.0, LengthUnit.FEET);
+		Length length2 = new Length(12.0, LengthUnit.INCHES);
+		boolean FeetInchesResult=demonstrateLengthEquality(length1,length2);
+		System.out.println("Equal" + "(" + FeetInchesResult + ")");
 	}
 }

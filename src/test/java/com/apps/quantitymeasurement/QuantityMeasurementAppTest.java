@@ -1,7 +1,11 @@
 package com.apps.quantitymeasurement;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+
+import com.apps.quantitymeasurement.Length.LengthUnit;
 
 public class QuantityMeasurementAppTest {
 	
@@ -79,5 +83,59 @@ public class QuantityMeasurementAppTest {
 	public void testInchesEquality_SameReference() {
 		QuantityMeasurementApp.Inches f1=Inches(5.0);
 		assertTrue(f1.equals(f1));
+	}
+	
+	@Test
+	public void testFeetEquality()
+	{
+		Length length1=new Length(1.0, LengthUnit.FEET);
+		Length length2= new Length(12.0, LengthUnit.INCHES);
+		assertEquals(length1, length2);
+	}
+	
+	@Test 
+	public void tetsInchesEquality()
+	{
+		Length inches1=new Length(10.0,LengthUnit.INCHES);
+		Length inches2=new Length(10.0,LengthUnit.INCHES);
+		assertEquals(inches1, inches2);
+	}
+	
+	@Test
+	public void testFeetInchesComparison()
+	{
+		Length lengthFeet=new Length(1.0,LengthUnit.FEET);
+		Length lengthInches=new Length(12.0,LengthUnit.INCHES);
+		assertEquals(lengthFeet, lengthInches);
+	}
+	
+	@Test
+	public void testFeetInEquality()
+	{
+		Length lengthFeet1= new Length(1.0,LengthUnit.FEET);
+		Length lengthFeet2=new Length(10.0, LengthUnit.FEET);
+		assertNotEquals(lengthFeet1, lengthFeet2);
+	}
+	@Test
+	public void testInchesInEquality() {
+		Length lengthInch1=new Length(12.0, LengthUnit.INCHES);
+		Length lengthInch2=new Length(1.0, LengthUnit.INCHES);
+		assertNotEquals(lengthInch1, lengthInch2);
+	}
+	
+	@Test
+	public void crossUnitInEquality()
+	{
+		Length lengthFeet=new Length(3.0,LengthUnit.FEET);
+		Length lengthInches=new Length(35.0, LengthUnit.INCHES);
+		assertNotEquals(lengthFeet, lengthInches);
+	}
+	
+	@Test
+	public void testMultipleFeetComparsion()
+	{
+		Length lengthFeet1=new Length(5.0,LengthUnit.FEET);
+		Length lengthFeet2=new Length(5.0,LengthUnit.FEET);
+		assertEquals(lengthFeet1, lengthFeet2);
 	}
 }
