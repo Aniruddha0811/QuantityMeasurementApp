@@ -18,7 +18,7 @@ public class QuantityMeasurementAppTest {
 		return new QuantityMeasurementApp.Inches(value);
 	}
 	@Test
-	public void testFreeEquality_SameValue() {
+	public void testFeetEquality_SameValue() {
 	QuantityMeasurementApp.Feet f1=Feet(5.0);
 	assertTrue(f1.equals(f1));
 				
@@ -138,4 +138,77 @@ public class QuantityMeasurementAppTest {
 		Length lengthFeet2=new Length(5.0,LengthUnit.FEET);
 		assertEquals(lengthFeet1, lengthFeet2);
 	}
+	
+	@Test
+	public void testEqualityYardToYard_SameValue()
+	{
+		Length length1=new Length(1.0,LengthUnit.YARD);
+		Length length2=new Length(1.0,LengthUnit.YARD);
+		assertEquals(length1, length2);
+	}
+	
+	@Test
+	public void testEqualityYardToYard_DifferentValue()
+	{
+		Length length1=new Length(1.0,LengthUnit.YARD);
+		Length length2=new Length(1.0,LengthUnit.YARD);
+		assertEquals(length1, length2);
+	}
+	
+	@Test
+	public void testEqualityYardToFeet_EquivalentValue()
+	{
+		Length length1=new Length(2.0,LengthUnit.YARD);
+		Length length2=new Length(6.0,LengthUnit.FEET);
+		assertEquals(length1, length2);
+	}
+	
+	@Test
+	public void testEqualityYardToInches_EquivalentValue()
+	{
+		Length length1=new Length(1.0,LengthUnit.YARD);
+		Length length2=new Length(36.0,LengthUnit.INCHES);
+		assertEquals(length1, length2);
+	}
+	
+	@Test
+	public void testEqualityInchesToYard_EquivalentValue()
+	{
+		Length length1=new Length(36.0,LengthUnit.INCHES);
+		Length length2=new Length(1.0,LengthUnit.YARD);
+		assertEquals(length1, length2);
+	}
+	
+	@Test
+	public void testCMToCMEquality()
+	{
+		Length length1 = new Length(30.48, LengthUnit.CENTIMETERS);
+		Length length2 = new Length(30.48, LengthUnit.CENTIMETERS);
+		assertEquals(length1, length2);
+	}
+	
+	@Test
+	public void testEqualityYardToFeet_NonEquivalentValue()
+	{
+		Length length1=new Length(1.0,LengthUnit.YARD);
+		Length length2=new Length(2.0,LengthUnit.FEET);
+		assertNotEquals(length1, length2);
+	}
+	
+	@Test
+	public void testEquality_centimetersToInches_EquivalentValue()
+	{
+		Length length1 = new Length(1.0, LengthUnit.CENTIMETERS);
+		Length length2 = new Length(0.393701, LengthUnit.INCHES);
+		assertEquals(length1, length2);
+	}
+	
+	@Test
+	public void testEquality_centimetersToInches_NonEquivalentValue()
+	{
+		Length length1 = new Length(1.0, LengthUnit.CENTIMETERS);
+		Length length2 = new Length(1.0, LengthUnit.FEET);
+		assertEquals(length1, length2);
+	}
+	
 }
