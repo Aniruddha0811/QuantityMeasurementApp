@@ -30,6 +30,9 @@ public class Length implements Quantity{
 
 	public Length(Double value, LengthUnit unit) {
 		validateValue(value);
+		if (unit == null) {
+			throw new IllegalArgumentException("Unit argument having the null value");
+		}
 		this.value = value;
 		this.unit = unit;
 
