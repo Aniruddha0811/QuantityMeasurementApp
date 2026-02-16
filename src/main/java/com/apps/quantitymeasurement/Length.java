@@ -26,6 +26,11 @@ public class Length implements Quantity{
 		public double toBase(Double value) {
 			return value * conversionFactor;
 		}
+
+		public double convertTo(double value, LengthUnit targetUnit) {
+			double baseValue = this.toBase(value);
+			return baseValue / targetUnit.getConversionfactor();
+		}
 	}
 
 	public Length(Double value, LengthUnit unit) {
@@ -44,6 +49,14 @@ public class Length implements Quantity{
 		{
 			throw new IllegalArgumentException("Invalid numeric value");
 		}
+	}
+	
+	public static double convert(Double value, LengthUnit sourceUnit, LengthUnit targetUnit)
+	{
+		double inches=sourceUnit.toBase(value);
+		double result=inches/targetUnit.getConversionfactor();
+		
+		return result;
 	}
 	public double convertToBaseUnit()
 	{
@@ -102,5 +115,8 @@ public class Length implements Quantity{
 		Length length5= new Length(100.0, LengthUnit.CENTIMETERS);
 		Length length6 = new Length(39.3701, LengthUnit.INCHES);
 		System.out.println("Are lengths equal?" + length5.equals(length6));
+		
+		double feetToInch=Length.convert(1.0, LengthUnit.FEET, LengthUnit.INCHES);
+		System.out.println(feetToInch);
 	}
 }

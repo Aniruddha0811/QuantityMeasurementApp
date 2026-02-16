@@ -119,6 +119,21 @@ public class QuantityMeasurementApp {
 		boolean result5=demonstrateLengthEquality(length9,length10);
 		System.out.println("Equal" + "(" + result5 + ")");
 		
+		double feetToInch=Length.convert(1.0,LengthUnit.FEET, LengthUnit.INCHES);
+		System.out.println(feetToInch);
+		
+		double yardToFeet=Length.convert(3.0,LengthUnit.YARD, LengthUnit.FEET);
+		System.out.println(yardToFeet);
+		
+		double inchesToYards=Length.convert(36.0, LengthUnit.INCHES, LengthUnit.YARD);
+		System.out.println(inchesToYards);
+		
+		double cmToInches=Length.convert(1.0, LengthUnit.CENTIMETERS, LengthUnit.INCHES);
+		System.out.println(cmToInches);
+		
+		double feetToInches=Length.convert(0.0, LengthUnit.FEET, LengthUnit.INCHES);
+		System.out.println(feetToInches);	
+		
 		
 	}
 }
