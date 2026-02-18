@@ -226,11 +226,11 @@ public class QuantityMeasurementAppTest {
 	}
 	
 	@Test
-	public void testEqualityYardwithNullunit()
+	public void testEqualityYardWithNullUnit()
 	{
 		Length length1 = new Length(1.0, LengthUnit.YARD);
 		Length length2 = new Length(3.0, null);
-		assertFalse(length1.equals(length2));
+		assertNotEquals(length1,length2);
 	}
 	
 	@Test
@@ -270,6 +270,81 @@ public class QuantityMeasurementAppTest {
 	{
 		Length Length1= new Length(1.0, LengthUnit.CENTIMETERS);
 		assertFalse(Length1.equals(null));
+		
+	}
+	
+	@Test
+	public void testConversion_FeetToInches()
+	{
+		double expectedInches=12.0;
+		double feetToInches=Length.convert(1.0,LengthUnit.FEET,LengthUnit.INCHES);
+		assertTrue(expectedInches==feetToInches);
+	}
+	@Test
+	public void testConversion_InchesToFeet()
+	{
+		double expectedFeet=2.0;
+		double inchesToFeet=Length.convert(24.0, LengthUnit.INCHES, LengthUnit.FEET);
+		assertTrue(expectedFeet==inchesToFeet);
+	}
+	
+	@Test
+	public void testConversion_YardsToInches()
+	{
+		double expectedInch=36.0;
+		double yardToInches=Length.convert(1.0, LengthUnit.YARD, LengthUnit.INCHES);
+		assertTrue(expectedInch==yardToInches);
+		
+	}
+	@Test
+	public void testConversion_InchesToYards()
+	{
+		double expectedYard=2.0;
+		double inchesToYard=Length.convert(72.0, LengthUnit.INCHES, LengthUnit.YARD);
+		assertTrue(expectedYard==inchesToYard);
+	}
+	@Test
+	public void testConversion_CentimetersToInches()
+	{
+		double expectedYard=1.0;
+		double cmToInches=Length.convert(2.54, LengthUnit.CENTIMETERS, LengthUnit.YARD);
+		assertTrue(expectedYard==cmToInches);
+	}
+	@Test
+	public void testConversion_FeetToYard()
+	{
+		double expectedYard=2.0;
+		double feetToYard=Length.convert(6.0, LengthUnit.FEET, LengthUnit.YARD);
+		assertTrue(expectedYard==feetToYard);
+	}
+	@Test
+	public void testConversion_RoundTrip_PreservesValue()
+	{
+		
+	}
+	@Test
+	public void testConversion_ZeroValue()
+	{
+		
+	}
+	@Test
+	public void testConversion_NegativeValue()
+	{
+		
+	}
+	@Test
+	public void testConversion_InvalidUnit_Throws()
+	{
+		
+	}
+	@Test
+	public void testConversion_NaNOrInfinite_Throws()
+	{
+		
+	}
+	@Test
+	public void testConversion_PrecisionTolerance()
+	{
 		
 	}
 }

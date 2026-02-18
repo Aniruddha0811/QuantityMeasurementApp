@@ -76,6 +76,13 @@ public class Length implements Quantity{
 	
 	public boolean compare(Length other)
 	{
+		if(this.unit==null && other.unit==null) {
+		return Double.compare(this.toBaseUnit(), other.toBaseUnit())==0;
+		}
+		if(this.unit==null || other.unit==null)
+		{
+			return false;
+		}
 		return Double.compare(this.toBaseUnit(), other.toBaseUnit())==0;
 	}
 	
