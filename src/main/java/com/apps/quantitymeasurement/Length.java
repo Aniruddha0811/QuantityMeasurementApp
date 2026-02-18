@@ -4,6 +4,10 @@ import com.apps.quantitymeasurement.service.Quantity;
 
 public class Length implements Quantity{
 
+	@Override
+	public String toString() {
+		return "Length [value=" + value + ", unit=" + unit + "]";
+	}
 	private double value;
 	private LengthUnit unit;
 
@@ -40,9 +44,15 @@ public class Length implements Quantity{
 		}
 		this.value = value;
 		this.unit = unit;
-
 	}
 	
+	public Length addition(Length other) {
+		
+	    double otherValueInMyUnit = other.unit.convertTo(other.getValue(), this.unit);
+	    double total = this.value + otherValueInMyUnit;
+	    System.out.println("total:"+total);
+	    return new Length(total, this.unit);
+	}
 	private void validateValue(Double value)
 	{
 		if(value.isNaN() || value.isInfinite())
@@ -58,6 +68,7 @@ public class Length implements Quantity{
 		
 		return result;
 	}
+	
 	public double convertToBaseUnit()
 	{
 		return unit.toBase(value);

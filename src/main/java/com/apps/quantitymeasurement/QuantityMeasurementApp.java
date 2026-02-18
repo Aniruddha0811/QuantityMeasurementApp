@@ -134,6 +134,14 @@ public class QuantityMeasurementApp {
 		double feetToInches=Length.convert(0.0, LengthUnit.FEET, LengthUnit.INCHES);
 		System.out.println(feetToInches);	
 		
+		//usecase 6
+		
+		Length l1=new Length(3.0,LengthUnit.FEET);
+		Length l2=new Length(12.0,LengthUnit.INCHES);
+		
+		Length result=l1.addition(l2);
+		System.out.println("result:"+result);
+		
 		
 	}
 }
